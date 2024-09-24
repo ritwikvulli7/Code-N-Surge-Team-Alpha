@@ -17,13 +17,13 @@
       background-color: #002855;
       color: #fff;
       text-align: center;
-      padding: 60px 0; /* Larger header */
+      padding: 60px 0; 
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
       position: relative;
     }
 
     header h1 {
-      font-size: 3.5rem; /* Larger font for the header */
+      font-size: 3.5rem; 
       margin: 0;
       position: relative;
       z-index: 1;
@@ -38,7 +38,7 @@
       color: #ffdd57;
     }
 
-    /* Categories that animate from within the header */
+
     .categories {
       display: flex;
       justify-content: center;
@@ -46,11 +46,11 @@
       padding: 0;
       margin: 0;
       position: absolute;
-      top: 100%; /* Start directly below the header */
+      top: 100%; 
       left: 0;
       width: 100%;
       opacity: 0;
-      animation: slideDown 1.2s ease forwards 1s; /* Slide down effect from header */
+      animation: slideDown 1.2s ease forwards 1s;
       background-color: #002855;
       z-index: 0;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
@@ -62,7 +62,7 @@
         opacity: 0;
       }
       to {
-        top: 100%; /* Moves into place right after the header */
+        top: 100%; 
         opacity: 1;
       }
     }
@@ -169,10 +169,13 @@
       <a href="#" data-category="technology">Technology</a>
       <a href="#" data-category="health">Health</a>
     </div>
+    <div>
+      <a href="weather1.html">weather</a>
+      <a href="stock.html">stock market</a>
+    </div>
   </header>
 
   <div class="news-container" id="news-container">
-    <!-- News articles will be dynamically loaded here -->
   </div>
 
   <script>
