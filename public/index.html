@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Our Channel - News Website</title>
   <style>
-    /* General Styles */
     body {
       font-family: Arial, sans-serif;
       margin: 0;
@@ -68,8 +67,6 @@
     .news-item p {
       font-size: 1rem;
     }
-
-    /* Responsive Styles */
     @media (max-width: 768px) {
       .news-item {
         width: 45%;
@@ -90,35 +87,27 @@
   </style>
 </head>
 <body>
-  <!-- Header with Channel Name and Login/Signup -->
   <header>
-    <h1>Our Channel</h1>
-    <nav>
-      <a href="#">Log In</a>
-      <a href="#">Sign Up</a>
-    </nav>
+    <center><h1>AlphaReports</h1></center>
   </header>
 
-  <!-- News Categories -->
   <div class="categories">
-    <a href="#">Politics</a>
-    <a href="#">Entertainment</a>
-    <a href="#">Food</a>
-    <a href="#">Education</a>
-    <a href="#">Sports</a>
-    <a href="#">Technology</a>
-    <a href="#">Health</a>
+    <a href="#" data-category="politics">Politics</a>
+    <a href="#" data-category="entertainment">Entertainment</a>
+    <a href="#" data-category="food">Food</a>
+    <a href="#" data-category="education">Education</a>
+    <a href="#" data-category="sports">Sports</a>
+    <a href="#" data-category="technology">Technology</a>
+    <a href="#" data-category="health">Health</a>
   </div>
-
-  <!-- News Articles Section -->
   <div class="news-container" id="news-container">
     <!-- News articles will be dynamically loaded here -->
   </div>
 
   <script>
-    async function fetchNews() {
+    async function fetchNews(category = '') {
       try {
-        const response = await fetch('/news'); // Fetching news from backend
+        const response = await fetch(`/news?category=${category}`); // Fetching news from backend with category
         const data = await response.json();
         displayNews(data.articles);
       } catch (error) {
@@ -145,8 +134,17 @@
       });
     }
 
-    // Fetch news when the page loads (this is a browser-specific operation)
-    window.onload = fetchNews;
+
+    document.querySelectorAll('.categories a').forEach(categoryLink => {
+      categoryLink.addEventListener('click', function (e) {
+        e.preventDefault();
+        const category = this.getAttribute('data-category');
+        fetchNews(category); // Fetch news for the clicked category
+      });
+    });
+
+    // Fetch default news when the page loads
+    window.onload = () => fetchNews();
   </script>
 </body>
 </html>
